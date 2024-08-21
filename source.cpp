@@ -57,7 +57,7 @@ class Employee
         return salary * 0.1;
     }
 };
-
+/*****************************/
 void priv_pub_acc(void)
 {
     Employee emp1;
@@ -66,10 +66,47 @@ void priv_pub_acc(void)
     cout << "name: " << emp1.name << " has " << emp1.get_salary() << " salary." << endl;
     emp1.printBounes();
 }
-/*************************************/
+/******************************/
+class Rectangle
+{
+    private:
+    double length;
+    double width;
+
+    double area()
+    {
+        return (length * width);
+    }
+
+    public:
+    void set_dim(double l, double w)
+    {
+        length = l;
+        width = w;
+    }
+    double perimeter();
+    void print_area()
+    {
+        cout << "The area is:" << area() << endl;
+    }
+};
+
+double Rectangle::perimeter()
+{
+    return 2*(length * width);
+}
+
+void methods(void)
+{
+    Rectangle rect1;
+    rect1.set_dim(4,3);
+    cout << "Perimeter is:" << rect1.perimeter()<<endl;
+    rect1.print_area();
+}
 int main()
 {
     //basic_class();
-    priv_pub_acc();
+    //priv_pub_acc();
+    methods();
     return 0;
 }
