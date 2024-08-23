@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/*************************/
 class BankAccount
 {
     public:
@@ -57,7 +58,6 @@ class Employee
         return salary * 0.1;
     }
 };
-/*****************************/
 void priv_pub_acc(void)
 {
     Employee emp1;
@@ -66,7 +66,7 @@ void priv_pub_acc(void)
     cout << "name: " << emp1.name << " has " << emp1.get_salary() << " salary." << endl;
     emp1.printBounes();
 }
-/******************************/
+/*************************/
 class Rectangle
 {
     private:
@@ -103,10 +103,88 @@ void methods(void)
     cout << "Perimeter is:" << rect1.perimeter()<<endl;
     rect1.print_area();
 }
+/*************************/
+class Cat{
+    private:
+    string name ;
+    string color;
+    string toy;
+
+    public:
+    void print_cat()
+    {
+        cout<<name<<endl<<color<<endl<<toy<<endl<<endl;
+    }
+
+    Cat()
+    {
+        name = "unknown";
+        color = "unknown";
+        toy = "unknown";
+    }
+
+    Cat(string n)
+    {
+        name = n;
+        color = "unknown";
+        toy = "unknown";
+    }
+
+    Cat(string n, string col, string t);
+};
+
+Cat::Cat(string n, string col, string t)
+    {
+        name = n;
+        color = col;
+        toy = t;
+    }
+
+void constructor_basic()
+{
+    Cat cat1;
+    cat1.print_cat();
+
+    Cat cat2("poofy");
+    cat2.print_cat();
+
+    Cat cat3("lolo", "gray", "Ball");
+    cat3.print_cat();
+
+} 
+/*************************/
+class Number{
+    private:
+    double *num;
+
+    public:
+    Number(double x)
+    {
+        num = (double *)malloc(sizeof(double));
+        *num = x;
+        cout<<"Constructor called"<<endl<<"number is: "<<*num<<endl;
+    }
+    ~Number()
+    {
+        cout<<"Destructor called"<<endl<<"number is: "<<*num<<endl;
+        free(num);
+    }
+};
+void destructor_basic()
+{
+    Number num1(4);
+    Number *five = new Number(5);
+    delete five;
+}
+
+/*************************/
+
 int main()
 {
     //basic_class();
     //priv_pub_acc();
-    methods();
+    //methods();
+    //constructor_basic();
+    destructor_basic();
     return 0;
 }
