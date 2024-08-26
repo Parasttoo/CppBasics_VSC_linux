@@ -176,7 +176,31 @@ void destructor_basic()
     Number *five = new Number(5);
     delete five;
 }
+/*************************/
+class SmartPtr
+{
+    int* sptr;
+    public:
+    SmartPtr(int* x = NULL)
+    {
+        sptr = x;
+    }
+    ~SmartPtr()
+    {
+        delete(sptr);
+    }
+    int& operator*()
+    {
+        return *sptr;
+    }
+};
 
+void smart_pointer(void)
+{
+    SmartPtr sptr1(new int());
+    *sptr1 = 68;
+    cout<< "pointer value is: "<<*sptr1 <<endl;
+}
 /*************************/
 
 int main()
@@ -185,6 +209,7 @@ int main()
     //priv_pub_acc();
     //methods();
     //constructor_basic();
-    destructor_basic();
+    //destructor_basic();
+    smart_pointer();
     return 0;
 }
