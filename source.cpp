@@ -202,6 +202,25 @@ void smart_pointer(void)
     cout<< "pointer value is: "<<*sptr1 <<endl;
 }
 /*************************/
+void vector_user_input(void)
+{
+    vector<int> data;
+    int i=0;
+    int value = 0;
+    cout<<"enter -1 to end the loop"<<endl;
+    while(true)
+    {
+        cout<<"element "<< i <<":";
+        cin>> value;
+        if(value == -1) break;
+        data.push_back(value);
+        i++;
+    }
+
+    for(auto elem:data)
+    cout<< elem << " "<< endl;
+
+}
 
 int main()
 {
@@ -210,6 +229,8 @@ int main()
     //methods();
     //constructor_basic();
     //destructor_basic();
-    smart_pointer();
+    //smart_pointer();
+    vector_user_input();
+
     return 0;
 }
