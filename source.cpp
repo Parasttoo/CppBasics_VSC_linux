@@ -221,7 +221,42 @@ void vector_user_input(void)
     cout<< elem << " "<< endl;
 
 }
+/*************************/
+class Animal{
+    public:
+    string species;
+    static int total;
 
+    Animal(string x)
+    {
+        species = x;
+        total++;
+    }
+
+    ~Animal()
+    {
+        total--;
+    }
+
+};
+int Animal::total = 0;
+
+
+void static_class_variable()
+{
+    Animal* lion = new Animal("lion");
+    Animal* tiger = new Animal("tiger");
+    Animal* bear = new Animal("bear");
+
+    cout<<lion->species<<endl;
+    cout<<tiger->species<<endl;
+    cout<<"total: "<<Animal::total<<endl;
+
+    delete lion;
+    delete tiger;
+    delete bear;
+    cout<<"total: "<<Animal::total<<endl;
+}
 int main()
 {
     //basic_class();
@@ -230,7 +265,8 @@ int main()
     //constructor_basic();
     //destructor_basic();
     //smart_pointer();
-    vector_user_input();
+    //vector_user_input();
+    static_class_variable();
 
     return 0;
 }
