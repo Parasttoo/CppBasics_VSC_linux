@@ -242,7 +242,7 @@ class Animal{
 int Animal::total = 0;
 
 
-void static_class_variable()
+void static_mem_variable()
 {
     Animal* lion = new Animal("lion");
     Animal* tiger = new Animal("tiger");
@@ -257,6 +257,45 @@ void static_class_variable()
     delete bear;
     cout<<"total: "<<Animal::total<<endl;
 }
+/*************************/
+class Squire1
+{
+    private:
+    int sidelen;
+    static int total_sq;
+
+    public:
+    int area()
+    {
+        return sidelen*sidelen;
+    }
+
+    Squire1(int x)
+    {
+        sidelen = x;
+        cout<<"side len is: "<<this->sidelen<<endl;
+        total_sq++;
+    }
+
+    static int gettotal()
+    {
+        return total_sq;
+    }
+
+};
+
+int Squire1::total_sq=0;
+
+void static_mem_func()
+{
+    Squire1 sq1(4);
+    Squire1 sq2(7);
+    cout<<"Sq1: "<<sq1.area()<<endl;
+    cout<<"Sq2: "<<sq2.area()<<endl;
+    cout<<"total: "<<Squire1::gettotal()<<endl;
+
+}
+
 int main()
 {
     //basic_class();
@@ -266,7 +305,8 @@ int main()
     //destructor_basic();
     //smart_pointer();
     //vector_user_input();
-    static_class_variable();
+    //static_mem_variable();
+    static_mem_func();
 
     return 0;
 }
